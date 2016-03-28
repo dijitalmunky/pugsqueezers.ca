@@ -1,0 +1,18 @@
+{
+  "name": "pugsqueezers.ca",
+  "version": "0.0.1",
+  "description": "Chris & Emma's Engagement Website/Blog",
+  "scripts": {
+    "build": "metalsmith"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dijitalmunky/dijitalmunky.github.io.git"
+  },
+  "author": "Emma Wilcox & Chris Roe <pugsqueezers@gmail.com>",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/dijitalmunky/dijitalmunky.github.io/issues"
+  },
+  "homepage": "http://pugsqueezers.ca"
+}
