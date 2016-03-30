@@ -1,0 +1,35 @@
+{
+  "source": "./_src",
+  "destination": "./_site",
+  "metadata": {
+    "title": "Emma & Chris' Engagement",
+    "description": "I asked, she agreed.",
+    "bootstrap-version": "3.3.6"
+  },
+  "plugins": {
+    "metalsmith-markdown": {
+      "gfm": true,
+      "tables": true,
+      "pedantic": false,
+      "sanitize": false,
+      "smartLists": true,
+      "smartypants": true
+    },
+    "metalsmith-layouts": {
+      "engine": "mustache",
+      "directory": "_layouts",
+      "partials": "_partials",
+      "default": "default.html",
+      "pattern": "*.html"
+    },
+    "metalsmith-sass": {
+      "outputDir": "css/",
+      "outputStyle": "compact"
+    },
+    "metalsmith-browser-sync": {
+      "server": "_site",
+      "files": ["_layouts/**/*.*", "_src/**/*.*", "_partials/**/*.*"],
+      "browser": "google chrome"
+    }
+  }
+}
