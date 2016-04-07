@@ -7,6 +7,10 @@
     "bootstrap-version": "3.3.6"
   },
   "plugins": {
+    "metalsmith-sass": {
+      "outputDir": "css/",
+      "outputStyle": "compact"
+    },
     "metalsmith-markdown": {
       "gfm": true,
       "tables": true,
@@ -22,14 +26,10 @@
       "default": "default.html",
       "pattern": "*.html"
     },
-    "metalsmith-sass": {
-      "outputDir": "css/",
-      "outputStyle": "compact"
-    },
-    "metalsmith-browser-sync": {
-      "server": "_site",
-      "files": ["_layouts/**/*.*", "_src/**/*.*", "_partials/**/*.*"],
-      "browser": "google chrome"
+    "metalsmith-s3": {
+      "bucket": "www.pugsqueezers.ca",
+      "action": "write",
+      "region": "us-west-2"
     }
   }
 }
