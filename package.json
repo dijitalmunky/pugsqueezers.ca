@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "Chris & Emma's Engagement Website/Blog",
   "scripts": {
-    "clean": "rimraf _site",
-    "build": "DEBUG=metalsmith-s3 metalsmith"
+    "clean": "rimraf site",
+    "build": "gulp",
+    "deploy": "gulp deploy"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,12 @@
     "metalsmith-sass": "~1.3.0",
     "mustache": "~2.2.1",
     "rimraf": "~2.5.2"
+  },
+  "devDependencies": {
+    "eslint": "~2.8.0",
+    "eslint-config-airbnb": "~7.0.0",
+    "eslint-plugin-jsx-a11y": "~0.6.2",
+    "eslint-plugin-react": "~4.3.0",
+    "gulp": "~3.9.1"
   }
 }

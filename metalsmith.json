@@ -1,16 +1,12 @@
 {
-  "source": "./_src",
-  "destination": "./_site",
+  "source": "./content",
+  "destination": "./build",
   "metadata": {
     "title": "Emma & Chris' Engagement",
     "description": "I asked, she agreed.",
     "bootstrap-version": "3.3.6"
   },
   "plugins": {
-    "metalsmith-sass": {
-      "outputDir": "css/",
-      "outputStyle": "compact"
-    },
     "metalsmith-markdown": {
       "gfm": true,
       "tables": true,
@@ -21,15 +17,16 @@
     },
     "metalsmith-layouts": {
       "engine": "mustache",
-      "directory": "_layouts",
-      "partials": "_partials",
+      "directory": "layouts",
+      "partials": "partials",
       "default": "default.html",
       "pattern": "*.html"
     },
+    "metalsmith-sass": {
+      "sourceMap": true,
+      "outputDir": "css/",
+      "outputStyle": "compact"
+    },
     "metalsmith-s3": {
-      "bucket": "www.pugsqueezers.ca",
-      "action": "write",
-      "region": "us-west-2"
-    }
   }
 }
