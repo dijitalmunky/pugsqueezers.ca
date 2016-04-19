@@ -1,6 +1,46 @@
 const gulp = require('gulp');
 const metalsmith = require('metalsmith');
+const excerpts = require('metalsmith-excerpts');
 const metadata = require('./metadata');
+
+const dirs = {
+  layout: 'layouts',
+  partials: 'partials',
+  build: 'site',
+  content: 'content',
+};
+
+const envs = {
+  dev: {
+    isDev: true,
+    sassOutput: 'expanded',
+    fullBuilds: false,
+  },
+  prod: {
+    isDev: false,
+    sassOutput: 'compact',
+    fullBuilds: true,
+  },
+};
+
+function blogPosts() {
+  return require('metalsmith-collections')({
+    articles: {
+      pattern: 'posts/**.md',
+      sortBy: 'publishDate',
+      reverse: true,
+    },
+  });
+}
+
+function browserSync() {
+  return require('metalsmith-browser-sync')({
+    server: dirs.build,
+    files: [`${dirs.content}/**/*`, `${dirs.layout}/**/*`, `${dirs.partials}/**/*`],
+    logPrefix: 'pugsqueezers.ca BrowserSync',
+    logFileChanges: true,
+  });
+}
 
 function uploadToS3() {
   return require('metalsmith-s3')({
@@ -11,21 +51,20 @@ function uploadToS3() {
 }
 
 function sass(env) {
-  const isDev = env === 'dev';
   return require('metalsmith-sass')({
-    sourceMap: isDev,
-    sourceMapContents: isDev,
-    sourceComments: isDev,
+    sourceMap: env.isDev,
+    sourceMapContents: env.isDev,
+    sourceComments: env.isDev,
     outputDir: (originalPath) => originalPath.replace('scss', 'css'),
-    outputStyle: isDev ? 'expanded' : 'compact',
+    outputStyle: env.sassOutput,
   });
 }
 
 function layouts() {
   return require('metalsmith-layouts')({
     engine: 'mustache',
-    directory: 'layouts',
-    partials: 'partials',
+    directory: dirs.layout,
+    partials: dirs.partials,
     default: 'default.html',
     pattern: '*.html',
   });
@@ -45,10 +84,11 @@ function markdown() {
 function baseBuild(env) {
   return metalsmith(__dirname)
     .metadata(metadata)
-    .source('content')
-    .destination('site')
-    .clean(env !== 'dev')
+    .source(dirs.content)
+    .destination(dirs.build)
+    .clean(env.fullBuilds)
     .use(markdown(env))
+    .use(excerpts())
     .use(layouts(env))
     .use(sass(env))
     ;
@@ -56,21 +96,27 @@ function baseBuild(env) {
 
 function done(err) {
   if (err) throw err;
-  console.log('Build completed.');
 }
 
 function buildLocal() {
-  return baseBuild('dev')
+  return baseBuild(envs.dev)
+    .build(done);
+}
+
+function watch() {
+  return baseBuild(envs.dev)
+    .use(browserSync())
     .build(done);
 }
 
 function deploy() {
   // add ability to specify the AWS creds to use.
-  const env = 'prod';
+  const env = envs.prod;
   return baseBuild(env)
          .use(uploadToS3(env))
          .build(done);
 }
 
 gulp.task('deploy', deploy);
+gulp.task('watch', watch);
 gulp.task('default', buildLocal);

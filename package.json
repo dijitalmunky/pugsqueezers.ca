@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Chris & Emma's Engagement Website/Blog",
   "scripts": {
-    "clean": "rimraf site",
     "build": "gulp",
+    "watch": "gulp watch",
     "deploy": "gulp deploy"
   },
   "repository": {
@@ -35,6 +35,8 @@
     "eslint-config-airbnb": "~7.0.0",
     "eslint-plugin-jsx-a11y": "~0.6.2",
     "eslint-plugin-react": "~4.3.0",
-    "gulp": "~3.9.1"
+    "gulp": "~3.9.1",
+    "metalsmith-collections": "~0.7.0",
+    "metalsmith-excerpts": "~1.1.0"
   }
 }

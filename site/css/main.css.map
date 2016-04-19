@@ -1,0 +1,18 @@
+{
+	"version": 3,
+	"file": "main.css",
+	"sources": [
+		"main.scss",
+		"base/_index.scss",
+		"base/_colors.scss",
+		"base/_fonts.scss"
+	],
+	"sourcesContent": [
+		"@import 'base/index';\n\n#wedding-title {\n  color: $color-primary;\n  font-family: $fonts-title;\n  font-size: 54px;\n  font-style: normal;\n}\n",
+		"@import 'colors';\n@import 'fonts';\n\nbody {\n  background-color: $color-bg-primary;\n  font-family: $fonts-primary;\n  color: $color-primary;\n}\n",
+		"$color-bg-primary: #FFF;\n$color-bg-secondary: #DDB;\n$color-bg-secondary: #AA8;\n$color-primary: #000;\n$color-secondary: #555;\n$color-tertiary: #AAA;\n",
+		"@import url(http://fonts.googleapis.com/css?family=Alex+Brush|Raleway);\n\n$fonts-title: 'Alex Brush', cursive;\n$fonts-primary: 'Raleway', sans-serif;\n"
+	],
+	"mappings": "AGAA,OAAO,CAAC,8DAAI;;AFGZ,IAAI,CAAC;EACH,gBAAgB,ECJC,IAAI;EDKrB,WAAW,EEFG,SAAS,EAAE,UAAU;EFGnC,KAAK,ECHS,IAAI;CDInB;;;ADLD,cAAc,CAAC;EACb,KAAK,EEAS,IAAI;EFClB,WAAW,EGFC,YAAY,EAAE,OAAO;EHGjC,SAAS,EAAE,IAAK;EAChB,UAAU,EAAE,MAAO;CACpB",
+	"names": []
+}
