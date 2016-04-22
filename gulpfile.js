@@ -8,25 +8,34 @@ const dirs = {
   partials: 'partials',
   build: 'site',
   content: 'content',
+  blog: 'content/posts',
 };
 
 const envs = {
   dev: {
     isDev: true,
     sassOutput: 'expanded',
-    fullBuilds: false,
   },
   prod: {
     isDev: false,
     sassOutput: 'compact',
-    fullBuilds: true,
   },
 };
 
+function permalinks() {
+  return require('metalsmith-permalinks')({
+    date: 'YYYY-MM-DD',
+    linksets: [{
+      match: { collection: 'posts' },
+      pattern: 'blog/:publishDate/:title',
+    }],
+  });
+}
+
 function blogPosts() {
   return require('metalsmith-collections')({
-    articles: {
-      pattern: 'posts/**.md',
+    posts: {
+      pattern: 'posts/**',
       sortBy: 'publishDate',
       reverse: true,
     },
@@ -37,7 +46,6 @@ function browserSync() {
   return require('metalsmith-browser-sync')({
     server: dirs.build,
     files: [`${dirs.content}/**/*`, `${dirs.layout}/**/*`, `${dirs.partials}/**/*`],
-    logPrefix: 'pugsqueezers.ca BrowserSync',
     logFileChanges: true,
   });
 }
@@ -66,7 +74,6 @@ function layouts() {
     directory: dirs.layout,
     partials: dirs.partials,
     default: 'default.html',
-    pattern: '*.html',
   });
 }
 
@@ -86,11 +93,12 @@ function baseBuild(env) {
     .metadata(metadata)
     .source(dirs.content)
     .destination(dirs.build)
-    .clean(env.fullBuilds)
+    .use(sass(env))
     .use(markdown(env))
     .use(excerpts())
+    .use(blogPosts())
+    .use(permalinks())
     .use(layouts(env))
-    .use(sass(env))
     ;
 }
 
@@ -119,4 +127,5 @@ function deploy() {
 
 gulp.task('deploy', deploy);
 gulp.task('watch', watch);
-gulp.task('default', buildLocal);
+gulp.task('build', buildLocal);
+gulp.task('default');

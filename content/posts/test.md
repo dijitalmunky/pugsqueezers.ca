@@ -1,9 +1,9 @@
 ---
 title: test post
-publishDate: 2016-01-01
-modifyDate: 2016-01-01
+publishDate: 2016-01-13
+modifyDate: 2016-01-14
 author: Chris
-template: post.html
+layout: post.html
 ---
 
-This is just a test
+This is just a test.
