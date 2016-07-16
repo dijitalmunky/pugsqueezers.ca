@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <div>
+          <img class="brand-img" alt="Brand" src="images/brand.png">
+          <div class="pull-right">The Pug Squeezers</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-nav">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://www.pugsqueezers.ca">Wedding Site</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Previous Posts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {{#collections.posts}}
+              <li><a href="{{path}}">{{publishDate}}</a></li>
+            {{/collections.posts}}
+          </ul>
+        </li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

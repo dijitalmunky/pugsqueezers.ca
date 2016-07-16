@@ -1,9 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
 {{>header}}
-<div id="post">
-  <h1>{{publishDate}}</h1>
-  <div class="container">
-    {{{contents}}}
+<body>
+  {{>navigation}}
+  <div class="post">
+    <h1>{{publishDate}}</h1>
+    <div class="container">
+      {{{contents}}}
+    </div>
+    <h4>Last modified: {{modifyDate}}, by {{author}}</h4>
   </div>
-  <h4>Last modified: {{modifyDate}}, by {{author}}</h4>
-</div>
-{{>footer}}
+  {{>footer}}
+</body>

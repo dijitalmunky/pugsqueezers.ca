@@ -1,7 +1,13 @@
 const gulp = require('gulp');
+const del = require('del');
 const metalsmith = require('metalsmith');
 const excerpts = require('metalsmith-excerpts');
 const metadata = require('./metadata');
+const sasslint = require('gulp-sass-lint');
+const mdlint = require('gulp-remark-lint-dko');
+const jslint = require('gulp-eslint');
+const jsonlint = require('gulp-jsonlint');
+const bootlint = require('gulp-bootlint');
 
 const dirs = {
   layout: 'layouts',
@@ -26,7 +32,9 @@ function permalinks() {
   return require('metalsmith-permalinks')({
     date: 'YYYY-MM-DD',
     linksets: [{
-      match: { collection: 'posts' },
+      match: {
+        collection: 'posts',
+      },
       pattern: 'blog/:publishDate/:title',
     }],
   });
@@ -70,9 +78,11 @@ function sass(env) {
 
 function layouts() {
   return require('metalsmith-layouts')({
-    engine: 'mustache',
+    engine: 'handlebars',
     directory: dirs.layout,
     partials: dirs.partials,
+    pattern: ['**/*.md', '**/*.hbs', '**/*.html'],
+    rename: true,
     default: 'default.html',
   });
 }
@@ -98,8 +108,7 @@ function baseBuild(env) {
     .use(excerpts())
     .use(blogPosts())
     .use(permalinks())
-    .use(layouts(env))
-    ;
+    .use(layouts(env));
 }
 
 function done(err) {
@@ -121,11 +130,79 @@ function deploy() {
   // add ability to specify the AWS creds to use.
   const env = envs.prod;
   return baseBuild(env)
-         .use(uploadToS3(env))
-         .build(done);
+    .use(uploadToS3(env))
+    .build(done);
 }
 
+function clean() {
+  return del([
+    // here we use a globbing pattern to match everything inside the `mobile` folder
+    dirs.build,
+  ]);
+}
+
+function sassLint() {
+  return gulp.src([
+    '*.s+(a|c)ss',
+    `${dirs.content}/**/*.s+(a|c)ss`,
+    `${dirs.partials}/**/*.s+(a|c)ss`,
+    `${dirs.layout}/**/*.s+(a|c)ss`,
+  ]).pipe(sasslint())
+    .pipe(sasslint.format())
+    .pipe(sasslint.failOnError());
+}
+
+function jsonLint() {
+  return gulp.src([
+    '*.json',
+    `${dirs.content}/**/*.json`,
+    `${dirs.partials}/**/*.json`,
+    `${dirs.layout}/**/*.json`,
+  ]).pipe(jsonlint())
+    .pipe(jsonlint.reporter())
+    .pipe(jsonlint.failOnError());
+}
+
+function jsLint() {
+  return gulp.src([
+    '*.js',
+    `${dirs.content}/**/*.js`,
+    `${dirs.partials}/**/*.js`,
+    `${dirs.layout}/**/*.js`,
+  ]).pipe(jslint())
+    .pipe(jslint.format())
+    .pipe(jslint.failAfterError());
+}
+
+function mdLint() {
+  return gulp.src([
+    '*.md',
+    `${dirs.content}/**/*.md`,
+    `${dirs.partials}/**/*.md`,
+    `${dirs.layout}/**/*.md`,
+  ]).pipe(mdlint())
+    .pipe(mdlint.report());
+}
+
+function htmlLint() {
+  return gulp.src([
+    '*.html',
+    `${dirs.content}/**/*.html`,
+    `${dirs.partials}/**/*.html`,
+    `${dirs.layout}/**/*.html`,
+  ]).pipe(bootlint());
+}
+
+gulp.task('clean', clean);
 gulp.task('deploy', deploy);
 gulp.task('watch', watch);
 gulp.task('build', buildLocal);
-gulp.task('default');
+
+gulp.task('sass-lint', sassLint);
+gulp.task('js-lint', jsLint);
+gulp.task('json-lint', jsonLint);
+gulp.task('md-lint', mdLint);
+gulp.task('html-lint', htmlLint);
+
+gulp.task('lint', ['sass-lint', 'js-lint', 'json-lint', 'md-lint', 'html-lint']);
+gulp.task('default', ['clean', 'lint'], buildLocal);

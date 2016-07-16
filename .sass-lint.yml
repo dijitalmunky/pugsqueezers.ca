@@ -1,0 +1,6 @@
+options:
+  formatter: stylish
+  merge-default-rules: true
+rules:
+  no-url-protocols:
+    - 0
