@@ -1,1 +1,17 @@
 @import 'posts';
+
+footer {
+  -webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,.15),0 1px 0 rgba(0,0,0,.075);
+  background-color: $color-bg-secondary;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,.15),0 1px 0 rgba(0,0,0,.075);
+  padding: 18px;
+}
+
+.social-icon {
+  font-size: 32px;
+}
+
+.vertical-center {
+  align-items: center;
+  display: flex;
+}

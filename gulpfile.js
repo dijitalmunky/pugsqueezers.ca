@@ -188,7 +188,8 @@ function htmlLint() {
   return gulp.src([
     '*.html',
     `${dirs.content}/**/*.html`,
-    `${dirs.partials}/**/*.html`,
+// temporarily disabled because html-lint errors on these because they are not full html files
+//    `${dirs.partials}/**/*.html`,
     `${dirs.layout}/**/*.html`,
   ]).pipe(bootlint());
 }
