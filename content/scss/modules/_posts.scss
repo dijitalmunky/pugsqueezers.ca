@@ -1,5 +1,18 @@
 .post {
-  h1 {
-    font-size: 9;
+  border: solid $color-secondary;
+  border-width: 0;
+
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  h2 {
+    color: $color-bg-tertiary;
+  }
+
+  .excerpt {
+    visibility: hidden;
   }
 }

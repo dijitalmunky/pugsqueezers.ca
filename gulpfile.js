@@ -1,13 +1,18 @@
-const gulp = require('gulp');
-const del = require('del');
+const metadata = require('./metadata');
 const metalsmith = require('metalsmith');
 const excerpts = require('metalsmith-excerpts');
-const metadata = require('./metadata');
+const gulp = require('gulp');
 const sasslint = require('gulp-sass-lint');
 const mdlint = require('gulp-remark-lint-dko');
 const jslint = require('gulp-eslint');
 const jsonlint = require('gulp-jsonlint');
 const bootlint = require('gulp-bootlint');
+const del = require('del');
+const Handlebars = require('handlebars');
+const HandlebarsIntl = require('handlebars-intl');
+
+// register the helpers w/ Handlebars
+HandlebarsIntl.registerWith(Handlebars);
 
 const dirs = {
   layout: 'layouts',

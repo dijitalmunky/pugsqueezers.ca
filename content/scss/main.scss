@@ -1,17 +1,4 @@
+@import 'mixins/index';
 @import 'base/index';
 @import 'layouts/index';
 @import 'modules/index';
-
-.wedding-title {
-  color: $color-primary;
-  font-family: $fonts-title;
-  font-size: 54px;
-  font-style: normal;
-}
-
-.brand-img {
-  height: 36px;
-  margin-right: 10px;
-  margin-top: -6px;
-  width: 36px;
-}

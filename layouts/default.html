@@ -5,15 +5,7 @@
   {{>navigation}}
   <div class="container">
     {{{contents}}}
-    <div class="row">
-      <div class="col-md-12">
-      <h1>Blog Posts</h1>
-      {{#collections.posts}}
-        {{publishDate}}
-        <a href="{{path}}">{{{excerpt}}}</a>
-      {{/collections.posts}}
-    </div>
-    </div>
+    {{>posts}}
   </div>
   {{>footer}}
 </body>

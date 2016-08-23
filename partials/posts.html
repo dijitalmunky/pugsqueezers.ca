@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row equal-height-panels">
+    {{#collections.posts}}
+    <div class="col-md-4">
+      <div class="panel post">
+      <a href="{{path}}">
+          <div class="panel-heading">
+          <h2>{{title}}<h2>
+        </div>
+        <div class="panel-body" style="background-image: url('/images/{{pic}}');">
+          {{{excerpt}}}
+        </div>
+        <div class="panel-footer">
+          {{formatDate publishDate day="numeric" month="long" year="numeric"}} by {{author}}
+        </div>
+      </a>
+      </div>
+    </div>
+    {{/collections.posts}}
+  </div>
+</div>
