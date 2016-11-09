@@ -1,7 +1,6 @@
 @import 'colors';
 @import 'fonts';
 @import 'breakpoints';
-@import 'mixins'
 
 body {
   background-color: $color-bg-primary;
@@ -12,4 +11,5 @@ body {
 
 footer {
   background-color: $color-bg-secondary;
+  margin-top: 18px;
 }

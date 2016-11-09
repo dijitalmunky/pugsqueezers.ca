@@ -1,18 +1,115 @@
-.post {
-  border: solid $color-secondary;
-  border-width: 0;
+.post-card {
+  @include card;
+
+  height: 250px;
+  margin: 10px auto;
+  width: 310px;
 
   a {
-    &:hover {
-      text-decoration: none;
+    color: $color-primary;
+    text-decoration: none;
+  }
+
+  .author {
+    font-size: 9px;
+    height: 15px;
+    line-height: 15px;
+    text-align: right;
+    vertical-align: middle;
+    width: 100%;
+
+    z-index: -1;
+
+    &::before {
+      content: 'by ';
     }
   }
 
-  h2 {
+  .date {
     color: $color-bg-tertiary;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .excerpt {
-    visibility: hidden;
+  .content {
+    border-radius: 6px;
+    height: 175px;
+    overflow: hidden;
+    position: relative;
+
+    .image {
+      border-radius: 6px;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: -1;
+    }
+
+    .excerpt {
+      background-color: fade-out($color-bg-primary, .25);
+      font-size: 13px;
+      height: 100%;
+      left: 0;
+      max-height: 100%;
+      padding: 10px;
+      position: absolute;
+      top: 175px;
+      width: 100%;
+    }
   }
+
+  .title {
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.post {
+  h2 {
+    font-size: 12px;
+    margin: 0 5px;
+  }
+
+  .author {
+    color: $color-secondary;
+  }
+
+  .byline {
+    border-right: 1px solid $color-secondary;
+  }
+
+  .contents {
+    text-align: justify;
+  }
+
+  .date {
+    color: $color-tertiary;
+  }
+
+  .image {
+    margin: 10px 0;
+  }
+
+  .title {
+    color: $color-bg-tertiary;
+    font-size: 36px;
+    text-align: center;
+  }
+
+}
+
+.posts {
+  background-color: $color-bg-primary;
+  position: relative;
+  top: 45vw;
 }

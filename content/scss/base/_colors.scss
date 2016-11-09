@@ -5,5 +5,9 @@ $color-primary: #000;
 $color-secondary: #555;
 $color-tertiary: #aaa;
 
-$color-shadow-lowlight: rgba(0, 0, 0, .15);
-$color-shadow-highlight: rgba(0, 0, 0, .075);
+$color-shadow-lowlight: rgba(0, 0, 0, .075);
+$color-shadow-highlight: rgba(0, 0, 0, .25);
+
+$color-transparent: rgba(255, 255, 255, 0);
+
+$color-border: #fff;

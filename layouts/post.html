@@ -3,12 +3,26 @@
 {{>header}}
 <body>
   {{>navigation}}
-  <div class="post">
-    <h1>{{publishDate}}</h1>
-    <div class="container">
-      {{{contents}}}
+  <div class="container">
+    <div class="row">
+      <div class="post col-md-8 col-md-offset-2">
+        <h1 class="title">{{title}}</h1>
+        <div class="row">
+          <div class="byline col-md-6 text-right">
+            <h2 class="date">{{formatDate publishDate weekday="long" day="numeric" month="long" year="numeric"}}</h2>
+          </div>
+          <div class="col-md-6 text-left">
+            <h2 class="author">by {{author}}</h2>
+          </div>
+        </div>
+        <div class="image">
+          <img src="/images/{{pic}}" alt="{{title}}" class="img-responsive" />
+        </div>
+        <div class="contents">
+          {{{contents}}}
+        </div>
+      </div>
     </div>
-    <h4>Last modified: {{modifyDate}}, by {{author}}</h4>
   </div>
   {{>footer}}
 </body>

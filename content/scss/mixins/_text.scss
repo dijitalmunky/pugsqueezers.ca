@@ -1,0 +1,18 @@
+// mixin for multiline
+@mixin line-clamp-fade($line-height: 1.2em, $line-count: 3, $background-color: $color-bg-primary) {
+  line-height: $line-height;
+  max-height: ($line-height * $line-count) - ($line-height / 2);
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    background: linear-gradient(to right, $color-transparent, $background-color 50%);
+    bottom: 0;
+    content: '';
+    height: $line-height;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    width: 70%;
+  }
+}

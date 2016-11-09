@@ -1,5 +1,5 @@
 ---
-title: another test
+title: Pug, pugs and more pugs!
 publishDate: 2016-04-21
 modifyDate: 2016-04-21
 author: Chris & Emma
@@ -32,7 +32,7 @@ vegan ethical. Knausgaard humblebrag tousled listicle keffiyeh trust fund.
 Chartreuse mlkshk listicle synth, skateboard neutra wolf hammock offal kitsch
 fanny pack tattooed. Franzen meditation taxidermy selfies slow-carb letterpress.
 Hashtag swag you probably haven't heard of them, cred disrupt retro waistcoat
-brooklyn ennui. Four loko blue bottle hella organic seitan, plaid DIY photo 
+brooklyn ennui. Four loko blue bottle hella organic seitan, plaid DIY photo
 booth +1 gluten-free portland humblebrag vegan.
 
 Shoreditch microdosing neutra offal actually leggings skateboard sustainable,

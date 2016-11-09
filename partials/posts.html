@@ -1,17 +1,26 @@
 <div class="container">
-  <div class="row equal-height-panels">
+  <div class="row">
     {{#collections.posts}}
     <div class="col-md-4">
-      <div class="panel post">
-      <a href="{{path}}">
-          <div class="panel-heading">
-          <h2>{{title}}<h2>
+      <div class="post-card">
+        <a href="{{path}}">
+        <div class="title">
+          {{title}}
         </div>
-        <div class="panel-body" style="background-image: url('/images/{{pic}}');">
-          {{{excerpt}}}
+        <div class="date">
+          {{formatDate publishDate day="numeric" month="long" year="numeric"}}
         </div>
-        <div class="panel-footer">
-          {{formatDate publishDate day="numeric" month="long" year="numeric"}} by {{author}}
+        <!--  style="background-image: url('/images/{{pic}}');"-->
+        <div class="content">
+          <div class="image">
+            <img src="/images/{{pic}}" class="img-responsive img-rounded center-block"/>
+          </div>
+          <div class="excerpt">
+            {{{excerpt}}}
+          </div>
+        </div>
+        <div class="author">
+          {{author}}
         </div>
       </a>
       </div>
