@@ -1,3 +1,4 @@
+const path = require('path');
 const metadata = require('./metadata');
 const metalsmith = require('metalsmith');
 const excerpts = require('metalsmith-excerpts');
@@ -107,12 +108,57 @@ function markdown() {
   });
 }
 
+function bundlejs() {
+  const CopyWebpackPlugin = require('copy-webpack-plugin');
+  const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+  return require('metalsmith-webpack')({
+    context: path.resolve(__dirname, `${dirs.content}/js`),
+    entry: [
+      'babel-polyfill',
+      'jquery',
+      'bootstrap-loader',
+      './main.js',
+    ],
+    output: {
+      path: path.resolve(__dirname, `${dirs.build}/js`),
+      filename: 'bundle.js',
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+          loader: 'file',
+        },
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css!sass' }),
+        },
+        // Bootstrap 3
+        {
+          test: /bootstrap-sass\/assets\/javascripts\//,
+          loader: 'imports?jQuery=jquery',
+        },
+        {
+          test: /\.js$/,
+          exclude: /(node_modules|bower_components)/,
+          loader: 'babel', // 'babel-loader' is also a valid name to reference
+          query: {
+            presets: ['es2015'],
+          },
+        },
+      ],
+    },
+  });
+}
+
 function baseBuild(env) {
   return metalsmith(__dirname)
     .metadata(metadata)
     .source(dirs.content)
     .destination(dirs.build)
     .use(sass(env))
+    .use(bundlejs())
     .use(markdown(env))
     .use(excerpts())
     .use(blogPosts())

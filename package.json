@@ -18,12 +18,26 @@
     "url": "https://github.com/dijitalmunky/dijitalmunky.github.io/issues"
   },
   "homepage": "http://pugsqueezers.ca",
-  "dependencies": {},
+  "dependencies": {
+    "babel-polyfill": "^6.16.0",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
+  },
   "devDependencies": {
+    "babel-cli": "~6.18.0",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "~6.18.0",
+    "bootstrap-loader": "^1.3.0",
+    "bootstrap-sass": "^3.3.7",
+    "copy-webpack-plugin": "^4.0.0",
+    "css-loader": "^0.25.0",
     "eslint": "~2.8.0",
     "eslint-config-airbnb": "~7.0.0",
     "eslint-plugin-jsx-a11y": "~0.6.2",
     "eslint-plugin-react": "~4.3.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
     "gulp": "~3.9.1",
     "gulp-bootlint": "~0.8.0",
     "gulp-eslint": "~3.0.1",
@@ -32,6 +46,7 @@
     "gulp-sass-lint": "~1.2.0",
     "handlebars": "~4.0.5",
     "handlebars-intl": "~1.1.2",
+    "imports-loader": "^0.6.5",
     "metalsmith": "~2.1.0",
     "metalsmith-browser-sync": "~1.1.1",
     "metalsmith-changed": "~0.2.0",
@@ -44,7 +59,13 @@
     "metalsmith-permalinks": "~0.5.0",
     "metalsmith-s3": "git+https://github.com/mwishek/metalsmith-s3.git",
     "metalsmith-sass": "~1.3.0",
+    "metalsmith-webpack": "^1.0.3",
+    "node-sass": "^3.11.2",
+    "resolve-url-loader": "^1.6.0",
     "rimraf": "~2.5.2",
-    "sass-lint": "~1.7.0"
+    "sass-lint": "~1.7.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
   }
 }

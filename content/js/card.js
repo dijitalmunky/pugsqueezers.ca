@@ -1,3 +1,5 @@
+import '../../thirdparty/js/clamp.js/clamp.js';
+
 function rollup(e) {
   $(this).find('.excerpt')
          .hoverFlow(e.type, { top: '0px' }, 'slow');
