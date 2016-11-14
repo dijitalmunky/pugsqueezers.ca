@@ -14,17 +14,17 @@
 }
 
 .header {
-  border: 1px solid blue;
   height: 40vw;
   margin: 0;
   padding: 0;
   position: fixed;
   width: 100%;
   z-index: -10;
+
   img {
+    position: relative;
     top: 50%;
     transform: translateY(-50%);
-    position: relative;
     width: 100%;
   }
 }

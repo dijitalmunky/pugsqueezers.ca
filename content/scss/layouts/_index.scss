@@ -1,3 +1,7 @@
+.navbar-pugsqueezers {
+  background-color: lighten($color-bg-secondary, 15%);
+}
+
 .vertical-center {
   align-items: center;
   display: flex;
@@ -12,4 +16,10 @@
   margin-right: 10px;
   margin-top: -6px;
   width: 36px;
+}
+
+.content-area {
+  background-color: $color-bg-primary;
+  position: relative;
+  top: 45vw;
 }
