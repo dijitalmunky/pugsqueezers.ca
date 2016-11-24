@@ -20,6 +20,8 @@
 
 .content-area {
   background-color: $color-bg-primary;
+  box-shadow: inset 0 -1px 0 $color-shadow-highlight, 0 -1px 5px $color-shadow-lowlight;
+  padding-top: 20px;
   position: relative;
   top: 45vw;
 }
