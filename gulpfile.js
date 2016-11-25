@@ -17,7 +17,7 @@ HandlebarsIntl.registerWith(Handlebars);
 const dirs = {
   layout: 'layouts',
   partials: 'partials',
-  build: 'site',
+  build: 'docs',
   content: 'content',
   blog: 'content/posts',
 };

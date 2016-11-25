@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css?family=Alex+Brush|Raleway");
+/* line 5, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/base/_index.scss */
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: "Raleway", sans-serif;
+  padding-top: 70px;
+}
+
+/* line 12, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/base/_index.scss */
+footer {
+  background-color: #98def5;
+  margin-top: 18px;
+}
+
+/* line 1, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/layouts/_index.scss */
+.navbar-pugsqueezers {
+  background-color: #ffe3e3;
+}
+
+/* line 5, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/layouts/_index.scss */
+.vertical-center {
+  align-items: center;
+  display: flex;
+}
+
+/* line 10, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/layouts/_index.scss */
+.panel-body {
+  background-size: cover;
+}
+
+/* line 14, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/layouts/_index.scss */
+.brand-img {
+  height: 36px;
+  margin-right: 10px;
+  margin-top: -6px;
+  width: 36px;
+}
+
+/* line 21, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/layouts/_index.scss */
+.content-area {
+  background-color: #fff;
+  box-shadow: inset 0 -1px 0 rgba(100, 100, 100, 0.25), 0 -1px 5px rgba(0, 0, 0, 0.075);
+  padding-top: 20px;
+  position: relative;
+  top: 45vw;
+}
+
+/* line 1, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post-card {
+  border: 1px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(100, 100, 100, 0.25), 0 1px 5px rgba(0, 0, 0, 0.075);
+  padding: 4px;
+  height: 250px;
+  margin: 10px auto;
+  width: 310px;
+}
+
+/* line 8, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post-card a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 13, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post-card .author {
+  font-size: 9px;
+  height: 15px;
+  line-height: 15px;
+  text-align: right;
+  vertical-align: middle;
+  width: 100%;
+  z-index: -1;
+}
+
+/* line 23, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post-card .author::before {
+  content: 'by ';
+}
+
+/* line 28, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post-card .date {
+  color: #bf0000;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* line 39, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post-card .content {
+  border-radius: 6px;
+  height: 175px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* line 45, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post-card .content .image {
+  border-radius: 6px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* line 52, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post-card .content .excerpt {
+  background-color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  height: 100%;
+  left: 0;
+  max-height: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 175px;
+  width: 100%;
+}
+
+/* line 65, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post-card .title {
+  font-size: 20px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* line 78, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post h2 {
+  font-size: 12px;
+  margin: 0 5px;
+}
+
+/* line 83, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post .author {
+  color: #555;
+}
+
+/* line 87, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post .byline {
+  border-right: 1px solid #555;
+}
+
+/* line 91, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post .contents {
+  text-align: justify;
+}
+
+/* line 95, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post .date {
+  color: #aaa;
+}
+
+/* line 99, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post .image {
+  margin: 10px 0;
+}
+
+/* line 103, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_posts.scss */
+.post .title {
+  color: #bf0000;
+  font-size: 36px;
+  text-align: center;
+}
+
+/* line 1, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_bootstrap.scss */
+.navbar-brand {
+  font-family: "Alex Brush", cursive;
+}
+
+/* line 1, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_footer.scss */
+footer {
+  background-color: #98def5;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.075), 0 1px 0 rgba(100, 100, 100, 0.25);
+  padding: 18px;
+}
+
+/* line 7, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_footer.scss */
+.social-icon {
+  font-size: 32px;
+}
+
+/* line 11, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_footer.scss */
+.copyright {
+  text-align: center;
+}
+
+/* line 5, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_index.scss */
+.wedding-title {
+  color: #000;
+  font-family: "Alex Brush", cursive;
+  font-size: 54px;
+  font-style: normal;
+}
+
+/* line 12, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_index.scss */
+.heart {
+  color: #bf0000;
+}
+
+/* line 16, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_index.scss */
+.header {
+  height: 40vw;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  z-index: -10;
+}
+
+/* line 24, /Users/chrisroe-Anow/Workspaces/Personal/pugsqueezers.ca/content/scss/modules/_index.scss */
+.header img {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+/*# sourceMappingURL=main.css.map */
