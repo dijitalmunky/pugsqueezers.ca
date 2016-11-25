@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Chris & Emma's Engagement Website/Blog",
   "scripts": {
+    "clean": "gulp clean",
     "build": "gulp build",
     "watch": "gulp watch",
     "deploy": "gulp deploy"
