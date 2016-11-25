@@ -33,8 +33,20 @@ const envs = {
   },
 };
 
+const docTypes = {
+  md: {
+    tplEngine: 'markdown',
+    pattern: '**/*.md',
+  },
+  hbs: {
+    tplEngine: 'handlebars',
+    pattern: '**/*.hbs',
+  },
+};
+
 function permalinks() {
   return require('metalsmith-permalinks')({
+    pattern: '',
     date: 'YYYY-MM-DD',
     linksets: [{
       match: {
@@ -63,14 +75,6 @@ function browserSync() {
   });
 }
 
-function uploadToS3() {
-  return require('metalsmith-s3')({
-    bucket: 'www.pugsqueezers.ca',
-    action: 'write',
-    region: 'us-west-2',
-  });
-}
-
 function sass(env) {
   return require('metalsmith-sass')({
     sourceMap: env.isDev,
@@ -86,7 +90,7 @@ function layouts() {
     engine: 'handlebars',
     directory: dirs.layout,
     partials: dirs.partials,
-    pattern: ['**/*.md', '**/*.hbs', '**/*.html'],
+    pattern: ['**/*.hbs', '**/*.html'],
     rename: true,
     default: 'default.html',
   });
@@ -113,7 +117,7 @@ function baseBuild(env) {
     .use(excerpts())
     .use(blogPosts())
     .use(permalinks())
-    .use(layouts(env));
+    .use(layouts());
 }
 
 function done(err) {
@@ -128,14 +132,6 @@ function buildLocal() {
 function watch() {
   return baseBuild(envs.dev)
     .use(browserSync())
-    .build(done);
-}
-
-function deploy() {
-  // add ability to specify the AWS creds to use.
-  const env = envs.prod;
-  return baseBuild(env)
-    .use(uploadToS3(env))
     .build(done);
 }
 
@@ -200,7 +196,6 @@ function htmlLint() {
 }
 
 gulp.task('clean', clean);
-gulp.task('deploy', deploy);
 gulp.task('watch', watch);
 gulp.task('build', buildLocal);
 
