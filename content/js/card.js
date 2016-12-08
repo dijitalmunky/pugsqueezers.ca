@@ -1,17 +1,18 @@
-import '../../thirdparty/js/clamp.js/clamp.js';
+/* global $clamp */
+import clamp from 'clamp-js';
 
-function rollup(e) {
+function rollup() {
   $(this).find('.excerpt')
-         .hoverFlow(e.type, { top: '0px' }, 'slow');
+         .animate({ top: 0 }, { queue: false, duration: 500 });
 }
 
-function rolldown(e) {
+function rolldown() {
   $(this).find('.excerpt')
-         .hoverFlow(e.type, { top: '175px' }, 'slow');
+         .animate({ top: '175px' }, { queue: false, duration: 500 });
 }
 
 function clampExcerpt() {
-  $clamp(this, {
+  clamp(this, {
     clamp: '8',
     truncationChar: '.',
     truncationHTML: '<span class="heart">❤</span>..',
