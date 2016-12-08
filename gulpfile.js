@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies, global-require */
 const path = require('path');
 const metadata = require('./metadata');
 const metalsmith = require('metalsmith');
@@ -23,6 +24,10 @@ const dirs = {
   blog: 'content/posts',
 };
 
+const bundles = {
+  js: 'bundle.js',
+};
+
 const envs = {
   dev: {
     isDev: true,
@@ -31,17 +36,6 @@ const envs = {
   prod: {
     isDev: false,
     sassOutput: 'compact',
-  },
-};
-
-const docTypes = {
-  md: {
-    tplEngine: 'markdown',
-    pattern: '**/*.md',
-  },
-  hbs: {
-    tplEngine: 'handlebars',
-    pattern: '**/*.hbs',
   },
 };
 
@@ -81,8 +75,11 @@ function sass(env) {
     sourceMap: env.isDev,
     sourceMapContents: env.isDev,
     sourceComments: env.isDev,
-    outputDir: (originalPath) => originalPath.replace('scss', 'css'),
+    sourceMapEmbed: env.isDev,
+    outputDir: originalPath => originalPath.replace('scss', 'css'),
     outputStyle: env.sassOutput,
+    includePaths: [path.join(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets')],
+    precision: 8,
   });
 }
 
@@ -108,48 +105,77 @@ function markdown() {
   });
 }
 
-function bundlejs() {
-  const CopyWebpackPlugin = require('copy-webpack-plugin');
-  const ExtractTextPlugin = require('extract-text-webpack-plugin');
+function bundlejs(env) {
+  return require('metalsmith-rollup')({
+    entry: 'content/js/main.js',
+    dest: path.join('js', bundles.js),
+    sourceMap: env.isDev,
+    plugins: [
+      require('rollup-plugin-eslint')({
+        exclude: 'thirdparty/js/**',
+      }),
+      require('rollup-plugin-babel')({
+        exclude: 'node_modules/**',
+      }),
+      require('rollup-plugin-node-resolve')({
+        // use "module" field for ES6 module if possible
+        module: true, // Default: true
 
-  return require('metalsmith-webpack')({
-    context: path.resolve(__dirname, `${dirs.content}/js`),
-    entry: [
-      'babel-polyfill',
-      'jquery',
-      'bootstrap-loader',
-      './main.js',
+        // use "jsnext:main" if possible
+        // – see https://github.com/rollup/rollup/wiki/jsnext:main
+        jsnext: true,  // Default: false
+
+        // use "main" field or index.js, even if it's not an ES6 module
+        // (needs to be converted from CommonJS to ES6
+        // – see https://github.com/rollup/rollup-plugin-commonjs
+        main: true,  // Default: true
+
+        // some package.json files have a `browser` field which
+        // specifies alternative files to load for people bundling
+        // for the browser. If that's you, use this option, otherwise
+        // pkg.browser will be ignored
+        browser: true,  // Default: false
+
+        // not all files you want to resolve are .js files
+        extensions: ['.js', '.json'],  // Default: ['.js']
+
+        // whether to prefer built-in modules (e.g. `fs`, `path`) or
+        // local ones with the same names
+        preferBuiltins: true,  // Default: true
+      }),
+      require('rollup-plugin-commonjs')({}),
+      require('rollup-plugin-uglify')({
+        sourceMap: env.isDev,
+      }),
     ],
-    output: {
-      path: path.resolve(__dirname, `${dirs.build}/js`),
-      filename: 'bundle.js',
-    },
-    module: {
-      loaders: [
-        {
-          test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
-          loader: 'file',
-        },
-        {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css!sass' }),
-        },
-        // Bootstrap 3
-        {
-          test: /bootstrap-sass\/assets\/javascripts\//,
-          loader: 'imports?jQuery=jquery',
-        },
-        {
-          test: /\.js$/,
-          exclude: /(node_modules|bower_components)/,
-          loader: 'babel', // 'babel-loader' is also a valid name to reference
-          query: {
-            presets: ['es2015'],
-          },
-        },
-      ],
-    },
+  }, {
+    ignoreSources: true,
   });
+}
+
+function rollupWorkaround() {
+  return require('metalsmith-each')((file, filename) => {
+    // workaround an issue in the metalsmith-rollup plugin where it creates the
+    // source map in the wrong place.
+    if (filename.endsWith('.map') && path.dirname(filename) === '.') {
+      return path.join('js', path.basename(filename));
+    }
+
+    return filename;
+  });
+}
+
+function removeExtraJsFiles() {
+  return function rmFiles(mfiles, ms, done) {
+    setImmediate(done);
+    Object.keys(mfiles).forEach((filename) => {
+      // workaround another issue in the rollup/metalsmith chain where it doesn't
+      // remove imported files from the output directory
+      if (filename.endsWith('.js') && path.dirname(filename) === 'js' && path.basename(filename) !== bundles.js) {
+        delete mfiles[filename]; // eslint-disable-line no-param-reassign
+      }
+    });
+  };
 }
 
 function baseBuild(env) {
@@ -157,28 +183,31 @@ function baseBuild(env) {
     .metadata(metadata)
     .source(dirs.content)
     .destination(dirs.build)
+    .clean(true)
     .use(sass(env))
-    .use(bundlejs())
+    .use(bundlejs(env))
+    .use(rollupWorkaround(env))
+    .use(removeExtraJsFiles(env))
     .use(markdown(env))
-    .use(excerpts())
-    .use(blogPosts())
-    .use(permalinks())
-    .use(layouts());
+    .use(excerpts(env))
+    .use(blogPosts(env))
+    .use(permalinks(env))
+    .use(layouts(env));
 }
 
-function done(err) {
+function finish(err) {
   if (err) throw err;
 }
 
 function buildLocal() {
   return baseBuild(envs.dev)
-    .build(done);
+    .build(finish);
 }
 
 function watch() {
   return baseBuild(envs.dev)
     .use(browserSync())
-    .build(done);
+    .build(finish);
 }
 
 function clean() {

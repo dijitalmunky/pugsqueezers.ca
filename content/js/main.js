@@ -1,4 +1,3 @@
-import 'jquery';
-import 'bootstrap';
-import '../../thirdparty/js/jquery.hoverflow/jquery.hoverflow.js';
-import './card.js';
+import './jquery-global';
+import 'bootstrap-sass'; //eslint-disable-line 
+import './card';
