@@ -5,6 +5,9 @@
 /// @return {Number}
 /// @throw Error if `$unit` does not exist or if units are incompatible.
 @function convert-unit($value, $unit) {
+  // units are required here because of the conversion.
+  //
+  // sass-lint:disable zero-unit
   $units: (
     'px': 0px,
     'cm': 0cm,
@@ -33,6 +36,7 @@
     'dpcm': 0dpcm,
     'dpi': 0dpi,
   );
+  // sass-lint:disable zero-unit
 
   @if map-has-key($units, $unit) {
     @return map-get($units, $unit) + $value;

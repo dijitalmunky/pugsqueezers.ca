@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Alex+Brush|Raleway');
+$gwf-title: 'Alex Brush';
+$gwf-body: 'Raleway';
 
-$fonts-title: 'Alex Brush', cursive;
-$fonts-primary: 'Raleway', sans-serif;
+@include gwf($gwf-title, $gwf-body);
+
+$fonts-title: $gwf-title, cursive;
+$fonts-primary: $gwf-body, sans-serif;

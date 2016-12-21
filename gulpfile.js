@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies, global-require */
+const _ = require('lodash');
 const path = require('path');
 const metadata = require('./metadata');
 const metalsmith = require('metalsmith');
@@ -12,6 +13,7 @@ const bootlint = require('gulp-bootlint');
 const del = require('del');
 const Handlebars = require('handlebars');
 const HandlebarsIntl = require('handlebars-intl');
+const argv = require('minimist')(process.argv.slice(2));
 
 // register the helpers w/ Handlebars
 HandlebarsIntl.registerWith(Handlebars);
@@ -199,9 +201,17 @@ function finish(err) {
   if (err) throw err;
 }
 
-function buildLocal() {
-  return baseBuild(envs.dev)
-    .build(finish);
+function build(env) {
+  return () => {
+    if (!envs[env]) {
+      throw new Error(`${env} is not recognized.  Valid environments are ${JSON.stringify(_.keys(envs))}`);
+    }
+
+    console.log(`Building for ${env}...`); // eslint-disable-line no-console
+
+    return baseBuild(envs[env])
+      .build(finish);
+  };
 }
 
 function watch() {
@@ -272,7 +282,7 @@ function htmlLint() {
 
 gulp.task('clean', clean);
 gulp.task('watch', watch);
-gulp.task('build', buildLocal);
+gulp.task('build', build(argv.env || 'prod'));
 
 gulp.task('sass-lint', sassLint);
 gulp.task('js-lint', jsLint);
@@ -281,4 +291,4 @@ gulp.task('md-lint', mdLint);
 gulp.task('html-lint', htmlLint);
 
 gulp.task('lint', ['sass-lint', 'js-lint', 'json-lint', 'md-lint', 'html-lint']);
-gulp.task('default', ['clean', 'lint'], buildLocal);
+gulp.task('default', ['clean', 'lint'], build(argv.env || 'prod'));
