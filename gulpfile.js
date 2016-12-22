@@ -15,6 +15,8 @@ const Handlebars = require('handlebars');
 const HandlebarsIntl = require('handlebars-intl');
 const argv = require('minimist')(process.argv.slice(2));
 
+const nullPlugin = () => {};
+
 // register the helpers w/ Handlebars
 HandlebarsIntl.registerWith(Handlebars);
 
@@ -85,6 +87,15 @@ function sass(env) {
   });
 }
 
+function minifycss(env) {
+  return require('metalsmith-clean-css')({
+    files: `${dirs.build}/**/*.css`,
+    cleanCSS: {
+      rebase: true,
+    },
+    sourceMap: env.isDev,
+  });
+}
 function layouts() {
   return require('metalsmith-layouts')({
     engine: 'handlebars',
@@ -180,13 +191,22 @@ function removeExtraJsFiles() {
   };
 }
 
+function drafts(env) {
+  if (env.isDev) {
+    return nullPlugin;
+  }
+  return require('metalsmith-drafts')();
+}
+
 function baseBuild(env) {
   return metalsmith(__dirname)
     .metadata(metadata)
     .source(dirs.content)
     .destination(dirs.build)
     .clean(true)
+    .use(drafts(env))
     .use(sass(env))
+    .use(minifycss(env))
     .use(bundlejs(env))
     .use(rollupWorkaround(env))
     .use(removeExtraJsFiles(env))

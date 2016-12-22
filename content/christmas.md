@@ -8,7 +8,7 @@ layout: base.html
 
 ## Emma
 
-### DVDss
+### DVDs
 
 -   [The Conjuring 2](https://www.amazon.ca/Conjuring-2-Bilingual-Vera-Farmiga/dp/B01GKJX5ME/ref=sr_1_2)
 -   [Lights Out](https://www.amazon.ca/Lights-Out-Bilingual-Teresa-Palmer/dp/B01IWHKN1I/ref=sr_1_1)
