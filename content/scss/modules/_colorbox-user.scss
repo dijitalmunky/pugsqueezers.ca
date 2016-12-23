@@ -1,0 +1,147 @@
+//    User Style:
+//    Change the following styles to modify the appearance of Colorbox.  They are
+//    ordered & tabbed in a way that represents the nesting of the generated HTML.
+//
+// Since this file is basically provided by a vendor (they haven't packaged it properly)
+// we disable some sass-lint warnings
+//
+// sass-lint:disable no-ids no-misspelled-properties class-name-format no-vendor-prefixes
+
+#cboxOverlay {
+  background: transparentize($color-bg-secondary, .3);
+}
+
+#colorbox {
+  outline: 0;
+}
+
+#cboxContent {
+  background: $color-bg-primary;
+  border: 10px solid $color-bg-primary;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cboxIframe {
+  background: $color-bg-primary;
+}
+
+#cboxError {
+  border: 1px solid $color-bg-secondary;
+  padding: 50px;
+}
+
+#cboxLoadedContent {
+  margin-bottom: 28px;
+}
+
+#cboxTitle {
+  bottom: 4px;
+  color: $color-primary;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+#cboxCurrent {
+  bottom: 4px;
+  color: $color-primary;
+  left: 58px;
+  position: absolute;
+}
+
+#cboxLoadingOverlay {
+  background-color: $color-primary;
+}
+
+#cboxLoadingGraphic {
+  background: url('/images/loading.gif') no-repeat center center;
+}
+
+// these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles
+#cboxClose,
+#cboxNext,
+#cboxPrevious,
+#cboxSlideshow,
+.cboxElement {
+  background: none;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  width: auto;
+
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+}
+
+
+#cboxSlideshow {
+  bottom: 4px;
+  color: $color-shadow-lowlight;
+  position: absolute;
+  right: 30px;
+}
+
+
+#cboxPrevious {
+  background: url('/images/colorbox/controls.png') no-repeat -75px 0;
+  bottom: 0;
+  height: 25px;
+  left: 0;
+  position: absolute;
+  text-indent: -9999px;
+  width: 25px;
+
+  &:hover {
+    background-position: -75px -25px;
+  }
+}
+
+#cboxNext {
+  background: url('/images/colorbox/controls.png') no-repeat -50px 0;
+  bottom: 0;
+  height: 25px;
+  left: 27px;
+  position: absolute;
+  text-indent: -9999px;
+  width: 25px;
+
+  &:hover {
+    background-position: -50px -25px;
+  }
+}
+
+
+#cboxClose {
+  background: url('/images/colorbox/controls.png') no-repeat -25px 0;
+  bottom: 0;
+  height: 25px;
+  position: absolute;
+  right: 0;
+  text-indent: -9999px;
+  width: 25px;
+
+  &:hover {
+    background-position: -25px -25px;
+  }
+}
+
+//  The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
+//  when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to or needed in IE9.
+//  See: http://jacklmoore.com/notes/ie-transparency-problems/
+.cboxIE {
+  #cboxBottomCenter,
+  #cboxBottomLeft,
+  #cboxBottomRight,
+  #cboxMiddleLeft,
+  #cboxMiddleRight,
+  #cboxTopCenter,
+  #cboxTopLeft,
+  #cboxTopRight {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+  }
+}

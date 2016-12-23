@@ -10,20 +10,35 @@
         <h1 class="title">{{title}}</h1>
         <div class="row">
           <div class="byline col-md-6 text-right">
-            <h2 class="date">{{formatDate publishDate weekday="long" day="numeric" month="long" year="numeric"}}</h2>
+            <h2 class="date">{{formatDate publishDate "dddd, MMMM Do, YYYY"}}</h2>
           </div>
           <div class="col-md-6 text-left">
             <h2 class="author">by {{author}}</h2>
           </div>
         </div>
-        <div class="image">
-          <img src="/images/{{pic}}" alt="{{title}}" class="img-responsive" />
-        </div>
+        {{#if pic}}
+          <div class="image">
+            <img src="/images/{{pic}}" alt="{{title}}" class="img-responsive" />
+          </div>
+        {{/if}}
         <div class="contents">
           {{{contents}}}
         </div>
+        {{#if gallery}}
+          <h1>Gallery</h1>
+          <div class="row">
+            {{#galleryFiles gallery}}
+              <div class="col-md-4 gallery-item">
+                <a href="{{this}}" class="gallery">
+                  <img src="{{this}}" alt="{{title}} - #{{@index}}" title="Image #{{@index}}" class="img-responsive" />
+                </a>
+              </div>
+            {{/galleryFiles}}
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>
   {{>footer}}
+  {{>scripts}}
 </body>

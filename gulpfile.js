@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies, global-require */
 const _ = require('lodash');
 const path = require('path');
+const fs = require('fs');
 const metadata = require('./metadata');
 const metalsmith = require('metalsmith');
 const excerpts = require('metalsmith-excerpts');
@@ -12,13 +13,39 @@ const jsonlint = require('gulp-jsonlint');
 const bootlint = require('gulp-bootlint');
 const del = require('del');
 const Handlebars = require('handlebars');
-const HandlebarsIntl = require('handlebars-intl');
+const HandlebarsDateFormat = require('handlebars-dateformat');
 const argv = require('minimist')(process.argv.slice(2));
 
 const nullPlugin = () => {};
 
 // register the helpers w/ Handlebars
-HandlebarsIntl.registerWith(Handlebars);
+Handlebars.registerHelper('formatDate', HandlebarsDateFormat);
+Handlebars.registerHelper('galleryFiles', (gallery, options) => {
+  let data = null;
+  let dir = path.join('content', 'images', 'galleries');
+
+  if (!gallery) {
+    throw new Error('"gallery" must be specified.');
+  }
+
+  if (options.data) {
+    data = Handlebars.createFrame(options.data);
+  }
+
+  dir = path.join(dir, gallery);
+
+  const files = fs.readdirSync(dir);
+
+  let out = '';
+  files.forEach((file, idx) => {
+    if (data) {
+      data.index = idx;
+    }
+    out += options.fn(path.join('/images', 'galleries', gallery, file), { data });
+  });
+
+  return out;
+});
 
 const dirs = {
   layout: 'layouts',
@@ -82,7 +109,9 @@ function sass(env) {
     sourceMapEmbed: env.isDev,
     outputDir: originalPath => originalPath.replace('scss', 'css'),
     outputStyle: env.sassOutput,
-    includePaths: [path.join(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets')],
+    includePaths: [
+      path.join(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets'),
+    ],
     precision: 8,
   });
 }

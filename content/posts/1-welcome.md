@@ -1,7 +1,7 @@
 ---
 title: Welcome
-publishDate: 2016-10-23
-modifyDate: 2016-10-23
+publishDate: 2016-10-23T00:00:00-06:00
+modifyDate: 2016-10-23T00:00:00-06:00
 author: Chris
 layout: post.html
 pic: chris-silly.jpg

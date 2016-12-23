@@ -8,13 +8,15 @@
           {{title}}
         </div>
         <div class="date">
-          {{formatDate publishDate day="numeric" month="long" year="numeric"}}
+          {{formatDate publishDate "dddd, MMMM Do, YYYY"}}
         </div>
         <!--  style="background-image: url('/images/{{pic}}');"-->
         <div class="content">
+          {{#if pic}}
           <div class="image">
             <img src="/images/{{pic}}" class="img-responsive img-rounded center-block"/>
           </div>
+          {{/if}}
           <div class="excerpt">
             {{{excerpt}}}
           </div>

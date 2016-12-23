@@ -1,0 +1,88 @@
+//    Colorbox Core Style:
+//    The following CSS is consistent between example themes and should not be altered.
+//
+// Since this file is basically provided by a vendor (they haven't packaged it properly)
+// we disable some sass-lint warnings
+//
+// sass-lint:disable no-ids no-misspelled-properties class-name-format no-vendor-prefixes
+
+#cboxOverlay,
+#cboxWrapper,
+#colorbox {
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  transform: translate3d(0, 0, 0);
+  z-index: 9999;
+}
+
+#cboxWrapper {
+  max-width: none;
+}
+
+#cboxOverlay {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
+#cboxBottomLeft,
+#cboxMiddleLeft {
+  clear: left;
+}
+
+#cboxContent {
+  position: relative;
+}
+
+#cboxLoadedContent {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+}
+
+#cboxTitle {
+  margin: 0;
+}
+
+#cboxLoadingGraphic,
+#cboxLoadingOverlay {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#cboxClose,
+#cboxNext,
+#cboxPrevious,
+#cboxSlideshow {
+  cursor: pointer;
+}
+
+.cboxPhoto {
+  -ms-interpolation-mode: bicubic;
+  border: 0;
+  display: block;
+  float: left;
+  margin: auto;
+  max-width: none;
+}
+
+.cboxIframe {
+  border: 0;
+  display: block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#cboxContent,
+#cboxLoadedContent,
+#colorbox {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}

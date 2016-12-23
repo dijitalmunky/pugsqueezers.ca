@@ -20,5 +20,7 @@ function clampExcerpt() {
   });
 }
 
-$('.post-card').hover(rollup, rolldown);
-$('.excerpt>p').each(clampExcerpt);
+export default () => {
+  $('.post-card').hover(rollup, rolldown);
+  $('.excerpt>p').each(clampExcerpt);
+};
