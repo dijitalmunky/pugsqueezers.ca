@@ -6,7 +6,7 @@ author: Emma
 layout: post.html
 pic: venue.jpg
 gallery: venue
-draft: true
+draft: false
 ---
 
 Try searching the internet for wedding venues in and around Red Deer... there
