@@ -6,7 +6,7 @@ author: Emma
 layout: post.html
 pic: dress2.jpg
 gallery: dress2
-draft: true
+draft: false
 ---
 The wedding dress shopping happened in September, the 10th to be exact. David's
 Bridal had informed me the dress wouldn't be ready until sometime in December.

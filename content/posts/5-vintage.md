@@ -6,7 +6,7 @@ author: Emma
 layout: post.html
 pic: vintage.jpg
 gallery: vintage
-draft: true
+draft: false
 ---
 
 We have been on the hunt since the engagement in March for a few vintage items
