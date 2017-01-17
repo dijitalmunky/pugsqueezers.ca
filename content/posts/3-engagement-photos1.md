@@ -6,7 +6,7 @@ author: Emma
 layout: post.html
 pic: engagement-prep.jpg
 gallery: ep1
-draft: true
+draft: false
 ---
 
 We both wanted to get engagement photos done of us to celebrate a big step in
