@@ -4,47 +4,49 @@
 
 <body>
   {{>navigation}}
-  <div class="container">
+  <div class="container post">
     <div class="row">
-      <div class="post col-md-8 col-md-offset-2">
+      <div class="col-sm-8 col-md-8 col-md-offset-2 col-lg-8 col-ls-offset-2">
         <h1 class="title">{{title}}</h1>
-        <div class="row">
-          <div class="byline col-md-6 text-right">
-            <h2 class="date">{{formatDate publishDate "dddd, MMMM Do, YYYY"}}</h2>
-          </div>
-          <div class="col-md-6 text-left">
-            <h2 class="author">by {{author}}</h2>
-          </div>
-        </div>
-        {{#if pic}}
-        <div class="row">
-          <div class="col-md-12 image">
-            <img src="/images/{{pic}}" alt="{{title}}" class="img-responsive center" />
-          </div>
-        </div>
-        {{/if}}
-        <div class="contents">
-          {{{contents}}}
-        </div>
-        {{#if gallery}}
-          <h1>Gallery</h1>
-          <div class="row">
-            <div class="container-fluid">
-            {{#galleryFiles gallery}}
-              <div class="col-md-4">
-                <a href="{{this}}" class="gallery">
-                  <div class="gallery-item">
-                    <div class="image-container">
-                      <img src="{{this}}" alt="{{title}} - #{{@index}}" title="Image #{{@index}}" class="img-responsive" />
-                    </div>
-                  </div>
-              </a>
-              </div>
-            {{/galleryFiles}}
-            </div>
-          </div>
-        {{/if}}
       </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 byline text-right">
+        <h2 class="date">{{formatDate publishDate "dddd, MMMM Do, YYYY"}}</h2>
+      </div>
+      <div class="col-md-6 text-left">
+        <h2 class="author">by {{author}}</h2>
+      </div>
+    </div>
+    {{#if pic}}
+    <div class="row">
+      <div class="col-md-12 image">
+        <img src="/images/{{pic}}" alt="{{title}}" class="img-responsive center" />
+      </div>
+    </div>
+    {{/if}}
+    <div class="row">
+      <div class="contents">
+        {{{contents}}}
+      </div>
+      {{#if gallery}}
+        <h1>Gallery</h1>
+        <div class="row">
+          <div class="container-fluid">
+          {{#galleryFiles gallery}}
+            <div class="col-sm-4 col-md-3 col-lg-3">
+              <a href="{{this}}" class="gallery">
+                <div class="gallery-item">
+                  <div class="image-container">
+                    <img src="{{this}}" alt="{{title}} - #{{@index}}" title="Image #{{@index}}" class="img-responsive" />
+                  </div>
+                </div>
+            </a>
+            </div>
+          {{/galleryFiles}}
+          </div>
+        </div>
+      {{/if}}
     </div>
   </div>
   {{>footer}}

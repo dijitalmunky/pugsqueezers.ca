@@ -1,12 +1,12 @@
 ---
 title: Engagement photos at a "hidden gem"
-publishDate: 2017-01-17T08:35:00-07:00
-modifyDate: 2017-01-17T08:35:00-07:00
+publishDate: 2017-01-22T21:17:00-07:00
+modifyDate: 2017-01-22T21:17:00-07:00
 author: Chris
 layout: post.html
 pic: engagement-2.jpg
 gallery: ep2
-draft: true
+draft: false
 ---
 
 Red Deer is such an amazing community.  We have a fairly lively arts community,
