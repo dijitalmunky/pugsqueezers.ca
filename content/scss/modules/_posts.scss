@@ -14,9 +14,10 @@
     font-size: 9px;
     height: 15px;
     line-height: 15px;
+    margin: 0 4px;
+    padding: 0 4px;
     text-align: right;
     vertical-align: middle;
-    width: 100%;
 
     z-index: -1;
 
@@ -30,6 +31,7 @@
     font-size: 12px;
     height: 20px;
     line-height: 20px;
+    margin: 0 4px;
     overflow: hidden;
     text-align: center;
     text-overflow: ellipsis;
@@ -39,11 +41,13 @@
   .content {
     border-radius: 6px;
     height: 175px;
+    margin: 0 4px;
     overflow: hidden;
     position: relative;
 
     .image {
       border-radius: 6px;
+      // margin: 0 4px;
       position: relative;
       top: 50%;
       transform: translateY(-50%);
@@ -54,6 +58,7 @@
       font-size: 13px;
       height: 100%;
       left: 0;
+      // margin: 0 4px;
       max-height: 100%;
       padding: 10px;
       position: absolute;
@@ -66,7 +71,7 @@
     font-size: 20px;
     height: 30px;
     line-height: 30px;
-    margin: 0;
+    margin: 0 4px;
     overflow: hidden;
     text-align: center;
     text-overflow: ellipsis;

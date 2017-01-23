@@ -1,4 +1,23 @@
 .gallery-item {
   @include card;
+
+  height: 128px;
   margin: 10px;
+  padding: 2px;
+  position: relative;
+
+  .image-container {
+    border-radius: 4px;
+    height: 116px;
+    margin: 4px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      margin: 0 auto;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
 }

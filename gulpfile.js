@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies, global-require */
 const _ = require('lodash');
 const path = require('path');
-const fs = require('fs');
 const metadata = require('./metadata');
 const metalsmith = require('metalsmith');
 const excerpts = require('metalsmith-excerpts');
@@ -14,38 +13,15 @@ const bootlint = require('gulp-bootlint');
 const del = require('del');
 const Handlebars = require('handlebars');
 const HandlebarsDateFormat = require('handlebars-dateformat');
+const HandlebarsGalleryFiles = require('./handlebars-helpers/galleryFiles');
+
 const argv = require('minimist')(process.argv.slice(2));
 
 const nullPlugin = () => {};
 
 // register the helpers w/ Handlebars
 Handlebars.registerHelper('formatDate', HandlebarsDateFormat);
-Handlebars.registerHelper('galleryFiles', (gallery, options) => {
-  let data = null;
-  let dir = path.join('content', 'images', 'galleries');
-
-  if (!gallery) {
-    throw new Error('"gallery" must be specified.');
-  }
-
-  if (options.data) {
-    data = Handlebars.createFrame(options.data);
-  }
-
-  dir = path.join(dir, gallery);
-
-  const files = fs.readdirSync(dir);
-
-  let out = '';
-  files.forEach((file, idx) => {
-    if (data) {
-      data.index = idx;
-    }
-    out += options.fn(path.join('/images', 'galleries', gallery, file), { data });
-  });
-
-  return out;
-});
+Handlebars.registerHelper('galleryFiles', HandlebarsGalleryFiles);
 
 const dirs = {
   layout: 'layouts',

@@ -17,9 +17,11 @@
           </div>
         </div>
         {{#if pic}}
-          <div class="image">
-            <img src="/images/{{pic}}" alt="{{title}}" class="img-responsive" />
+        <div class="row">
+          <div class="col-md-12 image">
+            <img src="/images/{{pic}}" alt="{{title}}" class="img-responsive center" />
           </div>
+        </div>
         {{/if}}
         <div class="contents">
           {{{contents}}}
@@ -27,13 +29,19 @@
         {{#if gallery}}
           <h1>Gallery</h1>
           <div class="row">
+            <div class="container-fluid">
             {{#galleryFiles gallery}}
-              <div class="col-md-4 gallery-item">
+              <div class="col-md-4">
                 <a href="{{this}}" class="gallery">
-                  <img src="{{this}}" alt="{{title}} - #{{@index}}" title="Image #{{@index}}" class="img-responsive" />
-                </a>
+                  <div class="gallery-item">
+                    <div class="image-container">
+                      <img src="{{this}}" alt="{{title}} - #{{@index}}" title="Image #{{@index}}" class="img-responsive" />
+                    </div>
+                  </div>
+              </a>
               </div>
             {{/galleryFiles}}
+            </div>
           </div>
         {{/if}}
       </div>

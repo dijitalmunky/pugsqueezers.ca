@@ -25,3 +25,9 @@
   position: relative;
   top: 45vw;
 }
+
+.img-responsive {
+  &.center {
+    margin: 0 auto;
+  }
+}
