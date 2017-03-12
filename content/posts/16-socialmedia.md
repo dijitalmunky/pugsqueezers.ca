@@ -20,7 +20,7 @@ Instagram will be a great way for everyone to relive the day again and again
 through the photos of the event. Anyone can post their pictures and all you
 need to do is hashtag the pictures like so:
 
-[#pug.squeezers](https://www.instagram.com/explore/tags/pug.squeezers/)
+[#pugsqueezers](https://www.instagram.com/explore/tags/pugsqueezers/)
 
 that way everyone can see the photos on one account.
 

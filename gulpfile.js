@@ -87,6 +87,7 @@ function sass(env) {
     outputStyle: env.sassOutput,
     includePaths: [
       path.join(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets'),
+      path.join(__dirname, 'node_modules/font-awesome/scss'),
     ],
     precision: 8,
   });
@@ -120,6 +121,13 @@ function markdown() {
     sanitize: false,
     smartLists: true,
     smartypants: true,
+  });
+}
+
+function copyFaFonts() {
+  return require('metalsmith-copy-assets-540')({
+    src: 'node_modules/font-awesome/fonts',
+    dest: 'fonts',
   });
 }
 
@@ -211,6 +219,7 @@ function baseBuild(env) {
     .clean(true)
     .use(drafts(env))
     .use(sass(env))
+    .use(copyFaFonts(env))
     .use(minifycss(env))
     .use(bundlejs(env))
     .use(rollupWorkaround(env))
