@@ -1,36 +1,37 @@
 ---
-title: Best way to have a tea party
-publishDate: 2017-06-05T18:08:00-07:00
-modifyDate: 2017-06-05T18:08:00-07:00
-author: Emma
+title: Say Cheese!
+publishDate: 2017-06-23T19:02:00-06:00
+modifyDate: 2017-06-05T19:02:00-06:00
+author: Chris
 layout: post.html
-pic: tea-party.jpg
-gallery: tea-party
+pic: photobooth2.jpg
+gallery: photobooth2
 draft: false
 ---
+After many months (okay, maybe a year...) of hard work, the photo booth is
+almost ready!
 
-June 3rd was a slightly busy day. Firstly my mom and I drove to Edmonton for my
-first dress fitting. It went amazingly well and I was extremely excited to see
-my dress on myself again. I felt that magical sparkle.
+Being one that loves to learn, I took this opportunity to play with and use
+some technology I had been dying to learn and another that I felt I really
+needed some practice with.  Unfortunately, that meant that the project took
+much longer than I had anticipated and longer than I could've done it in if I'd
+stuck to what I knew.  But where is the fun in that?
 
-Then mom and I headed back to Red Deer ready for my Bridal Shower. I was a quite
-excited but yet a little nervous too. I am not one to be the centre of attention
-usually. But since this is the lead up to the big day I knew this was just the
-beginning. In the end though once I got to the party and began mingling with
-family and friends the nerves were gone.
+Fortunately, I am marrying one of the most understanding people I have ever
+known, so she gave me the space and support to take on such a project.  Emma,
+you are the best!
 
-Candace, my maid of honour, knows me so well and worked with Maureen and I
-assuming a few others, to get this event put together. It was Alice in
-Wonderland themed. Many of you may or may not know... it is one of my favourite
-Disney movies and I loved the strange book too. I have several tattoos showing
-my love for this tale. PLUS... it is how Chris proposed to me via a Alice
-scavenger hunt, super romantic. Anyways... the party was amazing, delightful,
-fun, and I was truly treated like a queen and spoiled beyond my wildest dreams.
-The decorations, the punch that either made you smaller or taller, the games,
-the key themed board of suggestions "Keys to a successful marriage", the tea
-with teacups, and the incredibly delightfully creative Alice cake. Apart from it
-looked beautiful, it was scrumptious!
+Anyways, near the beginning of this month, it was time to move onto phase 2
+of the project -- designing and building the housing for the electronics. Being
+people of creative, artsy and sometimes whimsical influences, Emma and I
+decided to fashion the housing after one of the props we picked up for pictures:
+A vintage 50s Kodak Brownie Camera.
 
-This day I bubbled over with such emotion. I may not have shown it but I know I
-had a grin from ear to ear. I love you all so much for thinking of me, even if
-you attended or couldn't make it, you all made me feel so special.
+Time to put my design skills to work, and bring my woodworking skills out of
+winter dormancy!  Originally, I wanted to try to make a one-to-one copy of the
+Brownie camera, however, after some sketching, it turned out that wasn't quite
+feasible because of the screen needed for people to interact with.
+
+Some quick brainstorming and consultation with the Mrs.-to-be and we settled on
+a Brownie inspired version instead.  We are incredibly happy with the result and
+hope you all have as much fun using it as I did making it!
