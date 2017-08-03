@@ -21,7 +21,7 @@ of a few details of the big day.  The itinerary for the day is:
 -   **4:00pm**
     -   The "unification" ceremony starts. The ceremony ("C" on the map above) will
     be off the veranda at the back of the house.  Near the end of the ceremony
-    we will have everyone turn and look to top balcony so the photographer can get
+    we will have everyone turn and look towards the top balcony so the photographer can get
     a shot of everyone.  
 -   **4:30pm**
     -   Social time begins.  Please make your way to "The Shed" (with the chair
@@ -32,7 +32,7 @@ of a few details of the big day.  The itinerary for the day is:
     on the map.
     -   The wedding party departs to have their souls stolen by the camera.
 -   **5pm**
-    -   Bar service starts.  We are having a toonie bar, so will be selling
+    -   Bar service starts.  We are having a toonie bar, so we will be selling
     tickets.  Please bring a small bit of cash for this.
 -   **6pm**
     -   Wedding Party arrives, and dinner begins. Speeches to follow dinner.
