@@ -4,7 +4,7 @@ publishDate: 2017-08-13T15:50:00-06:00
 modifyDate: 2017-08-13T15:50:00-06:00
 author: Chris
 layout: post.html
-pic: photo-booth-results.png
+pic: photo-booth-results.gif
 gallery: photobooth3
 draft: false
 ---
